@@ -1,4 +1,4 @@
-# Hướng dẫn tự làm Chatbot bán hàng trên Messenger (n8n + Gemini + Fanpage)
+# Hướng dẫn tự làm Chatbot trên Messenger (n8n + Gemini + Fanpage)
 
 Sau khi làm xong, khách nhắn tin vào **Fanpage** của bạn thì chatbot AI sẽ tự trả lời, tư vấn món và chốt đơn. Ví dụ trong hướng dẫn này là tiệm bánh mì, bạn có thể đổi sang ngành khác.
 
