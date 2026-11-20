@@ -1,0 +1,7 @@
+﻿node_modules/
+.env
+ufc-facebook.json
+Fca_Database/
+fca-config.json
+*appstate*
+*cookie*.json

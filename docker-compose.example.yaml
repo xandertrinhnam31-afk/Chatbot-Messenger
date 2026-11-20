@@ -1,0 +1,35 @@
+services:
+  n8n:
+    image: docker.io/n8nio/n8n:2.48.6
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # External task runner configuration
+      - N8N_RUNNERS_MODE=external
+      - N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
+      - N8N_RUNNERS_AUTH_TOKEN=DOI-THANH-MOT-CHUOI-BAT-KY
+      # Public URL (cloudflared) cho webhook Messenger
+      - WEBHOOK_URL=https://CHUA-CO-LINK.trycloudflare.com/
+      - N8N_PROXY_HOPS=1
+      # Explicit settings to clear deprecation warnings
+      - N8N_UNVERIFIED_PACKAGES_ENABLED=false
+      - N8N_RUNNERS_TASK_TIMEOUT=300
+      - N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES=268435456
+      - N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES=1000
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+  runners:
+    image: docker.io/n8nio/runners:2.48.6
+    container_name: n8n-runners
+    restart: unless-stopped
+    depends_on:
+      - n8n
+    environment:
+      - N8N_RUNNERS_TASK_BROKER_URI=http://n8n:5679
+      - N8N_RUNNERS_AUTH_TOKEN=DOI-THANH-MOT-CHUOI-BAT-KY
+
+volumes:
+  n8n_data:
